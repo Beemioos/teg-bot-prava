@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
 	plugins: [react()],
+	base: './', // важное исправление, чтобы работало на Netlify
+
 	server: {
 		headers: {
 			'Content-Security-Policy':
