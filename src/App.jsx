@@ -1,56 +1,52 @@
-import { Tab, TabList, TabPanel, Tabs } from '@telegram-apps/telegram-ui'
+import { AppRoot, Button, Text } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
 
-// Инициализация Telegram Web App
-const WebApp = window.Telegram.WebApp
-WebApp.ready()
-
-function App() {
-	const [activeTab, setActiveTab] = useState(0)
+const App = () => {
+	const [tab, setTab] = useState('text')
 
 	return (
-		<div className='App'>
-			<Tabs value={activeTab} onChange={setActiveTab}>
-				<TabList>
-					<Tab>Текст</Tab>
-					واردشده
-					<Tab>Фото</Tab>
-					<Tab>Результат</Tab>
-				</TabList>
-				<TabPanel>
-					<h2>Вкладка Текст</h2>
-					<p>Введите текст для отправки в бот.</p>
-					<input type='text' placeholder='Введите текст' />
-					<button
-						className='Button'
-						onClick={() => WebApp.showAlert('Текст сохранен!')}
-					>
-						Сохранить
-					</button>
-				</TabPanel>
-				<TabPanel>
-					<h2>Вкладка Фото</h2>
-					<p>Загрузите фото.</p>
-					<input type='file' accept='image/*' />
-					<button
-						className='Button'
-						onClick={() => WebApp.showAlert('Фото загружено!')}
-					>
-						Загрузить
-					</button>
-				</TabPanel>
-				<TabPanel>
-					<h2>Вкладка Результат</h2>
-					<p>Здесь отображаются результаты.</p>
-					<button
-						className='Button'
-						onClick={() => WebApp.showAlert('Результаты показаны!')}
-					>
-						Показать результаты
-					</button>
-				</TabPanel>
-			</Tabs>
-		</div>
+		<AppRoot>
+			<div style={{ paddingBottom: '60px', padding: '16px' }}>
+				{tab === 'text' && <Text>Здесь будет текст</Text>}
+				{tab === 'photo' && <Text>Здесь будет фото</Text>}
+				{tab === 'result' && <Text>Здесь будет результат</Text>}
+			</div>
+
+			<div
+				style={{
+					position: 'fixed',
+					bottom: 0,
+					width: '100%',
+          margin:0,
+					display: 'flex',
+					justifyContent: 'space-around',
+					padding: '8px 0',
+					background: 'var(--tg-theme-bg-color)',
+				}}
+			>
+				<Button
+					size='m'
+					mode={tab === 'text' ? 'primary' : 'secondary'}
+					onClick={() => setTab('text')}
+				>
+					Текст
+				</Button>
+				<Button
+					size='m'
+					mode={tab === 'photo' ? 'primary' : 'secondary'}
+					onClick={() => setTab('photo')}
+				>
+					Фото
+				</Button>
+				<Button
+					size='m'
+					mode={tab === 'result' ? 'primary' : 'secondary'}
+					onClick={() => setTab('result')}
+				>
+					Результат
+				</Button>
+			</div>
+		</AppRoot>
 	)
 }
 
