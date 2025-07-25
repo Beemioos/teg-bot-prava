@@ -1,6 +1,5 @@
 import { Tab, TabList, TabPanel, Tabs } from '@telegram-apps/telegram-ui'
 import { useState } from 'react'
-import './App.css'
 
 // Инициализация Telegram Web App
 const WebApp = window.Telegram.WebApp
