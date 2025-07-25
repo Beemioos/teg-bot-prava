@@ -17,7 +17,7 @@ const App = () => {
 					position: 'fixed',
 					bottom: 0,
 					width: '100%',
-          margin:0,
+					margin: 0,
 					display: 'flex',
 					justifyContent: 'space-around',
 					padding: '8px 0',
@@ -25,7 +25,19 @@ const App = () => {
 				}}
 			>
 				<Button
-					size='m'
+					size='l'
+					style={
+						tab === 'text'
+							? {
+									background: 'none',
+									border: 'none',
+									padding: '4px 8px',
+							  }
+							: {
+									background: 'var(--tg-theme-bg-color)',
+
+              }
+					}
 					mode={tab === 'text' ? 'primary' : 'secondary'}
 					onClick={() => setTab('text')}
 				>
